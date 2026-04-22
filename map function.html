@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Understand JS - Custom Map</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Custom Map Function Demo</h1>
+    <p>Click the button to double numbers</p>
+
+    <button onclick="runMap()">Run</button>
+
+    <div id="output"></div>
+
+    <script>
+        // Your custom map function
+        function myMap(array, callback) {
+            let result = [];
+
+            for (let i = 0; i < array.length; i++) {
+                result.push(callback(array[i], i, array));
+            }
+
+            return result;
+        }
+
+        function runMap() {
+            const numbers = [1, 2, 3, 4];
+
+            const doubled = myMap(numbers, function(num) {
+                return num * 2;
+            });
+
+            document.getElementById("output").innerText = doubled.join(", ");
+        }
+    </script>
+
+</body>
+</html>
